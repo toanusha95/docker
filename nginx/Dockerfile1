@@ -1,0 +1,16 @@
+FROM nginx
+COPY index.html /usr/share/nginx/html/
+EXPOSE 8080
+
+
+
+##index.html
+## <html>
+    <head>
+        <title>Welcome to nginx!</title>
+    </head>
+    <body>
+        <h1>Success!  The nginx server block is working!</h1>
+    </body>
+</html>
+##
