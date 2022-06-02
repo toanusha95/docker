@@ -1,0 +1,13 @@
+version: "3.3"
+services:
+  one:
+    image: nginx
+    ports:
+     - "8080:8080"
+    deploy:
+      replicas: 3
+  two:
+    image: tomcat:9
+    ports:
+     - "8083:8080"
+

@@ -1,0 +1,34 @@
+## this is sample for practice
+
+version: '3.1'
+services:
+    web:
+        image: lsapan/docker-swarm-demo-web
+        command: gunicorn --bind 0.0.0.0:5000 wsgi:app
+        deploy:
+            replicas: 2
+        secrets:
+            - db_password
+
+    nginx:
+        image: lsapan/docker-swarm-demo-nginx
+        ports:
+            - 8000:80
+        deploy:
+            mode: global
+
+    redis:
+        image: redis
+        deploy:
+            replicas: 1
+
+secrets:
+    db_password:
+        external: true
+
+## enter db password while running
+## using this command
+##echo "<pasted contents here>" > docker-compose.yml
+##echo "supersecretpassword" | docker secret create db_password -
+##docker stack deploy -c docker-compose.yml demo
+
